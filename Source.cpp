@@ -55,7 +55,7 @@ inline DWORD FtoDW(FLOAT f) { return *((DWORD*)&f); }
 VOID DrawGLScene()
 {
 	g_pd3dDevice->Clear(0, NULL, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER,
-		D3DCOLOR_COLORVALUE(0.0f, 0.2f, 0.0f, 1.0f), 1.0f, 0);
+		D3DCOLOR_COLORVALUE(0.0f, 0.0f, 0.0f, 1.0f), 1.0f, 0);
 	g_pd3dDevice->BeginScene();
 	g_pd3dDevice->SetTexture(0, m_ptexParticle);
 	g_pd3dDevice->DrawPrimitive(D3DPT_POINTLIST, 0, POINTS);
@@ -223,7 +223,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 			g_pd3dDevice->SetTransform(D3DTS_WORLD, &mWorld);
 
 			g_pd3dDevice->SetRenderState(D3DRS_POINTSPRITEENABLE, TRUE);
-			g_pd3dDevice->SetRenderState(D3DRS_POINTSIZE, FtoDW(10.0f));
+			g_pd3dDevice->SetRenderState(D3DRS_POINTSIZE, FtoDW(6.0f));
 
 			g_pd3dDevice->SetStreamSource(0, g_pPointList_VB, 0, sizeof(Vertex));
 			g_pd3dDevice->SetFVF(D3DFVF_MY_VERTEX);
@@ -231,7 +231,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 			for (int i = 0; i < POINTS; i++)
 			{
 				pVertex[i].z = 0.0f;
-				pVertex[i].color = D3DCOLOR_COLORVALUE(1.0, 1.0, 1.0, 0.1);
+				pVertex[i].color = D3DCOLOR_COLORVALUE(157.0f / 255.0f, 1.0, 157.0f / 255.0f, 0.8f);
 			}
 
 			g_pd3dDevice->SetTextureStageState(0, D3DTSS_COLORARG1, D3DTA_TEXTURE);
